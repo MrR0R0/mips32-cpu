@@ -1,0 +1,39 @@
+Address     Code        Label       Basic                   Source
+
+0x00000000  0x3c09ffff              lui $9,0xffff        	lui	$t1,0xffff
+0x00000004  0xac0900c8              sw $9,0x00c8($0)     	sw	$t1,200($zero)
+0x00000008  0x3409ffff              ori $9,$0,0xffff     	ori	$t1,$zero,0xffff
+0x0000000c  0x200a1111              addi $10,$0,0x1111   	addi	$t2,$zero,0x1111
+0x00000010  0x012a0019              multu $9,$10            multu	$t1,$t2
+0x00000014  0x00001010              mfhi $2                 mfhi	$v0
+0x00000018  0x00001812              mflo $3                 mflo	$v1
+0x0000001c  0xac0200cc              sw $2,0x00cc($0)     	sw	$v0,204($zero)
+0x00000020  0xac0300d0              sw $3,0x00d0($0)     	sw	$v1,208($zero)
+0x00000024  0x3c0bdead              lui $11,0xdead       	lui	$t3,0xdead
+0x00000028  0x356bbeef              ori $11,$11,0xbeef   	ori	$t3,$t3,0xbeef
+0x0000002c  0x3c0c900d              lui $12,0x900d       	lui	$t4,0x900d
+0x00000030  0x358cf00d              ori $12,$12,0xf00d   	ori	$t4,$t4,0xf00d
+0x00000034  0x016c0019              multu $11,$12           multu	$t3,$t4
+0x00000038  0x00001010              mfhi $2                 mfhi	$v0
+0x0000003c  0x00001812              mflo $3                 mflo	$v1
+0x00000040  0xac0200d4              sw $2,0x00d4($0)     	sw	$v0,212($zero)
+0x00000044  0xac0300d8              sw $3,0x00d8($0)     	sw	$v1,216($zero)
+0x00000048  0x2004ffff              addi $4,$0,0xffff    	addi	$a0,$zero,-1		#bad(fail)
+0x0000004c  0x3405900d              ori $5,$0,0x900d     	ori	$a1,$zero,0x900d	#good
+0x00000050  0x08000018              j 0x0060             	j	next1
+0x00000054  0xac0400dc              sw $4,0x00dc($0)     	sw	$a0,220($zero)
+0x00000058  0xac0400e0              sw $4,0x00e0($0)     	sw	$a0,224($zero)
+0x0000005c  0xac0400e4              sw $4,0x00e4($0)     	sw	$a0,228($zero)
+0x00000060  0xac0500e8  next1:      sw $5,0x00e8($0)     	sw	$a1,232($zero)
+0x00000064  0x0c00001f              jal 0x007c           	jal	func1
+0x00000068  0xac0500f4              sw $5,0x00f4($0)     	sw	$a1,244($zero)
+0x0000006c  0x20010088              addi $1,$0,0x0088    	addi	$at,$zero,0x0088
+0x00000070  0x0020f809              jalr $1                 jalr	$at
+0x00000074  0xac050100              sw $5,0x0100($0)     	sw	$a1,256($zero)
+0x00000078  0x0800001e  finish:     j 0x0078             	j	finish	
+0x0000007c  0xac1f00ec  func1:      sw $31,0x00ec($0)    	sw	$ra,236($zero)
+0x00000080  0xac0500f0              sw $5,0x00f0($0)     	sw	$a1,240($zero)
+0x00000084  0x03e00008              jr $31                  jr	$ra
+0x00000088  0xac0500f8  func2:      sw $5,0x00f8($0)     	sw	$a1,248($zero)
+0x0000008c  0xac0500fc              sw $5,0x00fc($0)     	sw	$a1,252($zero)
+0x00000090  0x03e00008              jr $31                  jr	$ra

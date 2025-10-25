@@ -1,8 +1,8 @@
 # Single-Cycle & Multi-Cycle MIPS32 CPU
 
-**Author:** M.M. Roshani
-**Course:** Computer Architecture
-**Instructor:** Mohammad-Reza Movahedin
+**Author:** M.M. Roshani   
+**Course:** Computer Architecture   
+**Instructor:** Mohammad-Reza Movahedin   
 
 ## Overview
 This repository contains an educational implementation of a **MIPS32 CPU** in Verilog/SystemVerilog. Both **single-cycle** and **multi-cycle** designs are included.
